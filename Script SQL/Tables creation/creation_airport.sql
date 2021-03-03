@@ -26,12 +26,7 @@ CREATE TABLE public.Test(
 	faa             INTEGER  NOT NULL,
 	maximum_score   INTEGER,
 	name_test       VARCHAR (25),
-	date_test       DATE  NOT NULL,
-	score_test      INTEGER  NOT NULL,
-	hour_test       TIME  NOT NULL,
-	number_test     INTEGER  NOT NULL,
 	CONSTRAINT Test_PK PRIMARY KEY (faa));
-
 
 ------------------------------------------------------------
 -- Table: Model
@@ -63,6 +58,7 @@ CREATE TABLE public.Expertises(
 	CONSTRAINT Expertises_Technician_FK FOREIGN KEY (name_Technician) REFERENCES public.Technician(name_Technician),
 	CONSTRAINT Expertises_Model0_FK FOREIGN KEY (ModelNumber) REFERENCES public.Model(ModelNumber));
 
+
 ------------------------------------------------------------
 -- Table: Tests
 ------------------------------------------------------------
@@ -70,6 +66,9 @@ CREATE TABLE public.Tests(
 	RegistrationNumber   INTEGER  NOT NULL,
 	faa                  INTEGER  NOT NULL,
 	name_Airport         VARCHAR (20) NOT NULL,
+	score_test           INTEGER  NOT NULL,
+	date_test            DATE  NOT NULL,
+	hour_test            TIMETZ  NOT NULL,
 	CONSTRAINT Tests_PK PRIMARY KEY (RegistrationNumber,faa,name_Airport),
 	CONSTRAINT Tests_Plane_FK FOREIGN KEY (RegistrationNumber) REFERENCES public.Plane(RegistrationNumber),
 	CONSTRAINT Tests_Test0_FK FOREIGN KEY (faa) REFERENCES public.Test(faa),
