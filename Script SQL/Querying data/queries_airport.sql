@@ -45,5 +45,5 @@ ORDER BY weight;
 -----------------------------------------------------------------------
 -- [7]  Give the name of airplane model that have the maximum capacity.
 -----------------------------------------------------------------------
-SELECT ModelNumber FROM Model
-ORDER BY capacity DESC LIMIT 1;
+SELECT modelnumber, capacity FROM Model
+WHERE capacity = (SELECT max (capacity) FROM Model)
