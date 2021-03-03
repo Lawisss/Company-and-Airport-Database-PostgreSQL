@@ -11,12 +11,12 @@ SELECT salary FROM Technician;
 SELECT Plane.RegistrationNumber FROM Plane
 INNER JOIN Tests ON Tests.RegistrationNumber = Plane.RegistrationNumber
 INNER JOIN Test ON Test.faa = Tests.faa
-WHERE EXTRACT (YEAR FROM Test.date_test) = 2020 AND score_test < 75;
+WHERE EXTRACT (YEAR FROM Tests.date_test) = 2020 AND Tests.score_test < 75;
 
 -------------------------------------------------------------------------------------
 -- [3] How many test are conducted each month the last year.
 -------------------------------------------------------------------------------------
-SELECT EXTRACT (MONTH FROM date_test) AS test_month, COUNT(*) FROM Test
+SELECT EXTRACT (MONTH FROM date_test) AS test_month, COUNT(*) FROM Tests
 WHERE EXTRACT (YEAR FROM date_test) = 2020
 GROUP BY EXTRACT (MONTH FROM date_test);
 
